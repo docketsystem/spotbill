@@ -2,19 +2,55 @@
 <html>
 <head>
   <title>Accessory Repair & Requirement Booking Portal</title>
-  
   <link rel="icon" type="image/png" href="https://i.postimg.cc/90D2Wsff/Screenshot-2026-04-15-075610.png">
-  
   <style>
-    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+    body, html { 
+        margin: 0; 
+        padding: 0; 
+        height: 100%; 
+        overflow: hidden; 
+        font-family: "Segoe UI", sans-serif;
+    }
     iframe {
-      width: 100%;
-      height: calc(100% + 55px); /* Etai banner-ke niche lukiye debe */
-      border: none;
+        width: 100%;
+        height: calc(100% + 55px); /* Etai banner-ke niche lukiye debe */
+        border: none;
+        display: block;
+    }
+
+    /* ================= FOOTER STYLES ================= */
+    footer { 
+        width: 100%; 
+        text-align: right; 
+        padding-right: 25px; 
+        color: #FFF; 
+        position: absolute; 
+        bottom: 15px; 
+        right: 0; 
+        box-sizing: border-box; 
+        line-height: 1.4; 
+        z-index: 1000; /* iframe এর ওপরে দেখানোর জন্য */
+        pointer-events: none; /* এর ফলে ফুটারের লেখার ওপর ক্লিক করলেও পেজের কাজ করবে */
+    }
+    .developer-info b { 
+        color: #e91e63; 
+        animation: namePulse 2s infinite; 
+        font-size: 15px; 
+    }
+    @keyframes namePulse { 
+        0%, 100% { color: #e91e63; } 
+        50% { color: #fff; text-shadow: 0 0 10px #e91e63; } 
     }
   </style>
 </head>
 <body>
+  
   <iframe src="https://script.google.com/macros/s/AKfycbyug98uxnBLo2nUvnR3E1U_w1e7ggAvjj8VUXm5ZFTHcqt1BDEWKxjoVgbbZZV2F8eT/exec"></iframe>
+
+  <footer>
+      <small style="color: #bbb; font-weight: 600; letter-spacing: 1px;">SYSTEM DEVELOPED BY</small><br />
+      <span class="developer-info"><b>Pritam Roy</b></span>
+  </footer>
+
 </body>
 </html>
