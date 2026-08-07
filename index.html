@@ -1,126 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Accessory Repair Booking Portal</title>
-  <link rel="icon" type="image/png" href="https://i.postimg.cc/90D2Wsff/Screenshot-2026-04-15-075610.png">
-  <style>
-    body, html { 
-        margin: 0; 
-        padding: 0; 
-        height: 100vh; 
-        overflow: hidden; 
-        background-color: #ffffff;
-        font-family: "Segoe UI", sans-serif;
-    }
+    <title>Connecting to Zygox Portal...</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/90D2Wsff/Screenshot-2026-04-15-075610.png">
     
-    #loader {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100vh;
-        background-color: #ffffff;
-        display: flex; flex-direction: column;
-        justify-content: center; align-items: center;
-        z-index: 9999;
-        transition: opacity 0.8s ease;
-    }
+    <!-- HTML Auto Redirect -->
+    <meta http-equiv="refresh" content="0;url=https://script.google.com/macros/s/AKfycbyug98uxnBLo2nUvnR3E1U_w1e7ggAvjj8VUXm5ZFTHcqt1BDEWKxjoVgbbZZV2F8eT/exec">
     
-    .spinner {
-        border: 4px solid rgba(32, 142, 123, 0.2);
-        border-top: 4px solid #208e7b;
-        border-radius: 50%;
-        width: 45px; height: 45px;
-        animation: spin 1s linear infinite;
-        margin-bottom: 15px;
-    }
-    
-    .loading-text { color: #208e7b; font-size: 18px; font-weight: bold; animation: pulse 1.5s infinite; }
-
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-
-    iframe {
-        position: absolute; top: -28px; left: 0; width: 100%; height: calc(100vh + 28px); 
-        border: none; display: block;
-    }
-
-    /* Fallback Error Message Design */
-    #fallbackMsg {
-        display: none;
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        background: #f8f9fa;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        border: 1px solid #dee2e6;
-        z-index: 10000;
-    }
-    
-    .open-btn {
-        background: #e91e63; color: white; padding: 12px 25px;
-        text-decoration: none; border-radius: 8px; font-weight: bold;
-        display: inline-block; margin-top: 15px; transition: 0.3s;
-    }
-    .open-btn:hover { background: #c2185b; }
-  </style>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #208e7b;
+            font-family: "Segoe UI", sans-serif;
+            color: white;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid #FFD700;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+        .loading-text {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    </style>
 </head>
 <body>
 
-  <div id="loader">
-      <div class="spinner"></div>
-      <div class="loading-text">Loading Portal...</div>
-  </div>
-  
-  <iframe 
-      id="portalFrame"
-      src="https://script.google.com/macros/s/AKfycbyug98uxnBLo2nUvnR3E1U_w1e7ggAvjj8VUXm5ZFTHcqt1BDEWKxjoVgbbZZV2F8eT/exec"
-      onload="handleIframeLoad()"
-      onerror="handleIframeError()">
-  </iframe>
+    <div style="text-align: center;">
+        <div class="spinner"></div>
+        <div class="loading-text">Connecting securely to portal...</div>
+    </div>
 
-  <!-- If Iframe Blocked by Google, Show This -->
-  <div id="fallbackMsg">
-      <h3 style="color: #e91e63; margin-top:0;">⚠️ Browser Security Blocked the View</h3>
-      <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Your browser's security settings (Third-Party Cookies) are preventing the portal from loading inside this page.</p>
-      <a href="https://script.google.com/macros/s/AKfycbyug98uxnBLo2nUvnR3E1U_w1e7ggAvjj8VUXm5ZFTHcqt1BDEWKxjoVgbbZZV2F8eT/exec" target="_blank" class="open-btn">
-          🚀 Click Here to Open Portal Securely
-      </a>
-  </div>
-
-  <script>
-      let isLoaded = false;
-
-      function hideLoader() {
-          if (isLoaded) return;
-          isLoaded = true;
-          const loader = document.getElementById("loader");
-          loader.style.opacity = "0";
-          setTimeout(() => { loader.style.display = "none"; }, 800); 
-      }
-
-      function handleIframeLoad() {
-          setTimeout(hideLoader, 1000);
-      }
-
-      function handleIframeError() {
-          hideLoader();
-          document.getElementById("fallbackMsg").style.display = "block";
-      }
-
-      // If iframe takes too long or gets refused, show the fallback button
-      setTimeout(() => {
-          hideLoader();
-          // We check if the iframe failed to load cross-origin content
-          try {
-              let test = document.getElementById("portalFrame").contentWindow.location.href;
-          } catch(e) {
-              // It's cross-origin, which is expected. But if it's completely refused, the user will see a blank screen.
-              // To be safe, we reveal the fallback button if they are stuck.
-              document.getElementById("fallbackMsg").style.display = "block";
-          }
-      }, 5000);
-  </script>
+    <!-- JavaScript Auto Redirect -->
+    <script>
+        window.location.replace("https://script.google.com/macros/s/AKfycbyug98uxnBLo2nUvnR3E1U_w1e7ggAvjj8VUXm5ZFTHcqt1BDEWKxjoVgbbZZV2F8eT/exec");
+    </script>
 
 </body>
 </html>
