@@ -1,25 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Connecting to Zygox Portal...</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zygox Service Portal</title>
     <link rel="icon" type="image/png" href="https://i.postimg.cc/90D2Wsff/Screenshot-2026-04-15-075610.png">
     
-    <!-- HTML Auto Redirect -->
-    <meta http-equiv="refresh" content="0;url=https://script.google.com/macros/s/AKfycbyug98uxnBLo2nUvnR3E1U_w1e7ggAvjj8VUXm5ZFTHcqt1BDEWKxjoVgbbZZV2F8eT/exec">
-    
     <style>
-        body {
+        /* পেজের মার্জিন সরিয়ে পুরো স্ক্রিন জুড়ে ফ্রেম বসানোর ডিজাইন */
+        body, html {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 100%;
+            overflow: hidden; /* ডাবল স্ক্রলবার বন্ধ করার জন্য */
             background-color: #208e7b;
-            font-family: "Segoe UI", sans-serif;
-            color: white;
         }
+        
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* লোডিং স্ক্রিনের ডিজাইন */
+        #loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-family: "Segoe UI", sans-serif;
+            z-index: -1; /* ফ্রেম লোড হলে এটি পেছনে চলে যাবে */
+        }
+
         .spinner {
             border: 4px solid rgba(255, 255, 255, 0.2);
             border-top: 4px solid #FFD700;
@@ -29,27 +44,28 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 15px auto;
         }
+
         .loading-text {
             font-size: 18px;
             font-weight: bold;
             letter-spacing: 1px;
             animation: pulse 1.5s infinite;
         }
+
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
     </style>
 </head>
 <body>
 
-    <div style="text-align: center;">
+    <!-- লোডিং অ্যানিমেশন (গুগল স্ক্রিপ্ট লোড হওয়ার আগ পর্যন্ত দেখাবে) -->
+    <div id="loader">
         <div class="spinner"></div>
         <div class="loading-text">Connecting securely to portal...</div>
     </div>
 
-    <!-- JavaScript Auto Redirect -->
-    <script>
-        window.location.replace("https://script.google.com/macros/s/AKfycbyug98uxnBLo2nUvnR3E1U_w1e7ggAvjj8VUXm5ZFTHcqt1BDEWKxjoVgbbZZV2F8eT/exec");
-    </script>
+    <!-- গুগল অ্যাপস স্ক্রিপ্টের ফ্রেম -->
+    <iframe src="https://script.google.com/macros/s/AKfycbyug98uxnBLo2nUvnR3E1U_w1e7ggAvjj8VUXm5ZFTHcqt1BDEWKxjoVgbbZZV2F8eT/exec"></iframe>
 
 </body>
 </html>
